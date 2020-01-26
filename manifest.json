@@ -2,7 +2,7 @@
   "name": "SHIPROD: a painless way to SHIpping PROducts in Dolibarr",
   "version": "1.0.0",
   "manifest_version": 2,
-  "description": "The main function of SHIPROD is to find in the product list the serial/id code and set the quantity to 1",
+  "description": "The main function of SHIPROD is to find in the product list the serial/id code and set the quantity to 1, for more info check https://github.com/ealopezg/shiprod. Developed by github.com/ealopezg under MIT License",
   "icons": {
     "16": "icons/icon16.png",
     "20": "icons/icon20.png",
