@@ -1,0 +1,30 @@
+{
+  "name": "SHIPROD: a painless way to SHIpping PROducts in Dolibarr",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "The main function of SHIPROD is to find in the product list the serial/id code and set the quantity to 1",
+  "icons": {
+    "16": "icons/icon16.png",
+    "20": "icons/icon20.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "permissions": [
+    "activeTab"
+],
+  "browser_action": {
+    "default_icon": "icons/icon20.png",
+    "default_title": "Inventory",
+    "default_popup": "src/page_action/page_action.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/dolibarr/expedition/card.php*"],
+      "all_frames": true,
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}
