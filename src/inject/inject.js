@@ -23,10 +23,12 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 		var serials = document.querySelectorAll('input[id^="lot_number"]');
 		var done = false;
 		Array.from(serials).forEach(function(item,index,array){
+			if(item.value == data){
+				done = true;
+			}
 			if(item.value == "" && !done){
 				item.value = data;
 				done = true;
-				sendResponse({data: data, success: true});	
 			}
 		});
 		if(done){
