@@ -10,7 +10,6 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
-  "permissions": ["http://*/dolibarr/*"],
   "browser_action": {
     "default_icon": "icons/icon20.png",
     "default_title": "Inventory",
@@ -24,5 +23,6 @@
         "src/inject/inject.js"
       ]
     }
-  ]
+  ],
+  "permissions": ["http://*/dolibarr/*"]
 }
