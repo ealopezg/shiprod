@@ -1,19 +1,41 @@
 chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
-    var data = request.data || {};
-    var products = document.querySelectorAll('tr .classfortooltip:nth-child(4)');
-	Array.from(products).forEach(function(item,index,array){
-		if(data.includes(item.text)){
-			var input = document.getElementById('qtyl0_'+String(index));
-			if(input.value == 0){
-				input.value = 1;
-				item.style.backgroundColor  = "orange";
+	var data = request.data || {};
+	var pathname = window.location.pathname;
+	
+	if(pathname == "/dolibarr/expedition/card.php"){
+		var products = document.querySelectorAll('tr .classfortooltip:nth-child(4)');
+		Array.from(products).forEach(function(item,index,array){
+			if(data.includes(item.text)){
+				var input = document.getElementById('qtyl0_'+String(index));
+				if(input.value == 0){
+					input.value = 1;
+					item.style.backgroundColor  = "orange";
+				}
+				else{
+					input.value = 0;
+					item.style.backgroundColor  = "transparent";
+				}
+				sendResponse({data: data, success: true});
 			}
-			else{
-				input.value = 0;
-				item.style.backgroundColor  = "transparent";
+		});
+	}
+	else if(pathname == "/dolibarr/fourn/commande/dispatch.php"){
+		var serials = document.querySelectorAll('input[id^="lot_number"]');
+		var done = false;
+		Array.from(serials).forEach(function(item,index,array){
+			if(item.value == "" && !done){
+				item.value = data;
+				done = true;
+				sendResponse({data: data, success: true});	
 			}
+		});
+		if(done){
 			sendResponse({data: data, success: true});
 		}
-	});
-    sendResponse({data: data, success: false});
+		else{
+			sendResponse({data: data, success: false});
+		}
+	}
+		sendResponse({data: data, success: false});
+	
 });

@@ -1,6 +1,6 @@
 {
   "name": "SHIPROD: a painless way to SHIpping PROducts in Dolibarr",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "manifest_version": 2,
   "description": "The main function of SHIPROD is to find in the product list the serial/id code and set the quantity to 1, for more info check https://github.com/ealopezg/shiprod. Developed by github.com/ealopezg under MIT License",
   "icons": {
@@ -20,7 +20,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://*/dolibarr/expedition/card.php*"],
+      "matches": ["<all_urls>"],
       "all_frames": true,
       "js": [
         "src/inject/inject.js"
