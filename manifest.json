@@ -1,5 +1,5 @@
 {
-  "name": "SHIPROD: a painless way to SHIpping PROducts in Dolibarr",
+  "name": "SHIPROD",
   "version": "2.5.0",
   "manifest_version": 2,
   "description": "A painless way to SHIpping PROducts in Dolibarr for more info check https://github.com/ealopezg/shiprod",
