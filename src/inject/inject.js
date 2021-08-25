@@ -5,7 +5,7 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 	if(pathname == "/dolibarr/expedition/card.php"){
 		var products = document.querySelectorAll('tr .classfortooltip:nth-child(4)');
 		Array.from(products).forEach(function(item,index,array){
-			if(data.includes(item.text)){
+			if(item.text.includes(data)){
 				var input = document.getElementById('qtyl0_'+String(index));
 				if(input.value == 0){
 					input.value = 1;
