@@ -6,15 +6,31 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 		var products = document.querySelectorAll('tr .classfortooltip:nth-child(4)');
 		Array.from(products).forEach(function(item,index,array){
 			if(item.text.includes(data)){
-				var input = document.getElementById('qtyl0_'+String(index));
-				if(input.value == 0){
-					input.value = 1;
-					item.style.backgroundColor  = "orange";
+				try{
+					var input = document.getElementById('qtyl0_'+String(index));
+					if(input.value == 0){
+						input.value = 1;
+						item.style.backgroundColor  = "orange";
+					}
+					else{
+						input.value = 0;
+						item.style.backgroundColor  = "transparent";
+					}
 				}
-				else{
-					input.value = 0;
-					item.style.backgroundColor  = "transparent";
+				catch (e) {}
+				try{
+					var input = document.getElementById('qtyl10_'+String(index));
+					if(input.value == 0){
+						input.value = 1;
+						item.style.backgroundColor  = "orange";
+					}
+					else{
+						input.value = 0;
+						item.style.backgroundColor  = "transparent";
+					}
 				}
+				catch (e) {}
+				
 				sendResponse({data: data, success: true});
 			}
 		});
